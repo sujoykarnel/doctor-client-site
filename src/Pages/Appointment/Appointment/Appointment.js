@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import NavigationBar from '../../Shared/Navigation/NavigationBar';
 import AppointmentHeader from '../AppointmentHeader/AppointmentHeader';
 import AvailableAppointment from '../AvailableAppointment/AvailableAppointment';
