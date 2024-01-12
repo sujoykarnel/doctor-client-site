@@ -4,6 +4,8 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import Typography from '@mui/material/Typography';
+import TextField from '@mui/material/TextField';
+import { Button } from '@mui/material';
 
 const style = {
     position: 'absolute',
@@ -18,8 +20,21 @@ const style = {
 };
 
 
-const BookingModal = ({openBookingModal, handleBookingClose, booking}) => {
-    const { name, time, space } = booking;
+
+
+const BookingModal = ({ openBookingModal, handleBookingClose, booking, date }) => {
+    const { name, time } = booking;
+
+    const handleBookingSubmit = e => {
+        alert('Booking Submitted.')
+
+        //collect date
+        //send to database
+
+        handleBookingClose()
+        e.preventDefault()
+    }
+
     return (
         <Modal
             aria-labelledby="transition-modal-title"
@@ -39,9 +54,47 @@ const BookingModal = ({openBookingModal, handleBookingClose, booking}) => {
                     <Typography id="transition-modal-title" variant="h6" component="h2">
                         {name}
                     </Typography>
-                    <Typography id="transition-modal-description" sx={{ mt: 2 }}>
-                        {time}
-                    </Typography>
+
+                    <form onSubmit={handleBookingSubmit}>
+                        <TextField
+                            disabled
+                            sx={{
+                                width: '90%', m: 1,
+                            }}
+                            label="Time"
+                            id="outlined-size-small"
+                            defaultValue={time}
+                            size="small"
+                        />
+                        <TextField
+                            sx={{ width: '90%', m: 1 }}
+                            label="Your Name"
+                            id="outlined-size-small"
+                            size="small"
+                        />
+                        <TextField
+                            sx={{ width: '90%', m: 1 }}
+                            label="Your Email"
+                            id="outlined-size-small"
+                            size="small"
+                        />
+                        <TextField
+                            sx={{ width: '90%', m: 1 }}
+                            label="Your Phone Number"
+                            id="outlined-size-small"
+                            size="small"
+                        />
+                        <TextField
+                            disabled
+                            sx={{ width: '90%', m: 1 }}
+                            label="Your Phone Number"
+                            id="outlined-size-small"
+                            defaultValue={date.toDateString()}
+                            size="small"
+                        />
+                        <Button type='submit' variant="contained">Booking</Button>
+                    </form>
+
                 </Box>
             </Fade>
         </Modal>

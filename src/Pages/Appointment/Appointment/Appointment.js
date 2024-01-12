@@ -1,5 +1,5 @@
 import React from 'react';
-import NavigationBar from '../../Shared/Navigation/NavigationBar';
+import NavigationBar from '../../Shared/NavigationBar/NavigationBar';
 import AppointmentHeader from '../AppointmentHeader/AppointmentHeader';
 import AvailableAppointment from '../AvailableAppointment/AvailableAppointment';
 

@@ -52,6 +52,7 @@ const AvailableAppointment = ({ date }) => {
                 {
                     bookings.map(booking => <Booking
                         key={booking.id}
+                        date={newDate}
                         booking={booking}
                     ></Booking>)
                 }
