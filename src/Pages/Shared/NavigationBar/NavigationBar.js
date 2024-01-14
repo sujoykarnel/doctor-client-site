@@ -27,12 +27,12 @@ const NavigationBar = () => {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Doctor Portal
           </Typography>
-          <Link to='/home'><Button color="inherit">Home</Button></Link>
-          <Link to='/appointment'><Button color="inherit">Appointment</Button></Link>
+          <Link to='/home' style={{color:'white'}}><Button color="inherit">Home</Button></Link>
+          <Link to='/appointment' style={{ color: 'white' }}><Button color="inherit">Appointment</Button></Link>
           {
             user?.email ?
-              <Link ><Button onClick={logoutUser} color="inherit">Logout</Button></Link> :
-              <Link to='/login'><Button color="inherit">Login</Button></Link>
+              <Link style={{ color: 'white' }}><Button onClick={logoutUser} color="inherit">Logout</Button></Link> :
+              <Link to='/login' style={{ color: 'white' }}><Button color="inherit">Login</Button></Link>
           }
         </Toolbar>
       </AppBar>

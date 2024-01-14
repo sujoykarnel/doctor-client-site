@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import initializeFirebase from "../Pages/Login/Firebase/Firebase.init";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, updateProfile, signOut } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 //initialize firebase app
 initializeFirebase();
+
 
 const useFirebase = () => {
     const [user, setUser] = useState({});
@@ -12,12 +14,25 @@ const useFirebase = () => {
 
     const auth = getAuth();
 
-    const registerUser = (email, password) => {
+    const registerUser = (email, password, name, navigate) => {
         setIsLoading(true);
+
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 // Signed up 
                 setAuthError('');
+                const newUser = { email, displayName: name };
+                setUser(newUser)
+                //send name to firebase
+                updateProfile(auth.currentUser, {
+                    displayName: name
+                }).then(() => {
+                    
+                }).catch((error) => {
+                    
+                });
+
+                navigate('/home');
             })
             .catch((error) => {
                 const errorMessage = error.message;
