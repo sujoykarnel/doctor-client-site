@@ -7,6 +7,7 @@ import Login from './Pages/Login/Login/Login';
 import Register from './Pages/Login/Register/Register';
 import AuthProvider from './contexts/AuthProvider/AuthProvider';
 import ProtectRoutes from './Pages/Login/ProtectRoutes/ProtectRoutes';
+import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path='/register' element={<Register />} exact />
             <Route element={<ProtectRoutes/>}>
               <Route path='/appointment' element={<Appointment />} exact />
+              <Route path='/dashboard' element={<Dashboard />} exact />
             </Route>
           </Routes>
         </BrowserRouter>
