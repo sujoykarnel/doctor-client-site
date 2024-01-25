@@ -4,6 +4,7 @@ import Grid from '@mui/material/Grid';
 import doctor from '../../../images/doctor.png'
 import bg from '../../../images/appointment.png'
 import { Button, Container, Typography } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 
 
@@ -33,7 +34,7 @@ const AppointmentBanner = () => {
                             <Typography sx={{ color: 'background.paper', my: 3 }}>
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur esse quis necessitatibus, velit dolorum natus adipisci ut incidunt iusto accusantium.
                             </Typography>
-                            <Button variant='contained' >Appointment</Button>
+                            <Link to='/appointment'><Button variant='contained' >Appointment</Button></Link>
                         </Box>
                     </Grid>
                 </Grid>
