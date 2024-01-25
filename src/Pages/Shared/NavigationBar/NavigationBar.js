@@ -25,14 +25,14 @@ const NavigationBar = () => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Doctor Portal
+            <Link to='/home' style={{textDecoration:'none', color:'white'}}>Doctor Portal</Link>
           </Typography>
           <Link to='/home' style={{ color: 'white' }}><Button color="inherit">Home</Button></Link>
           <Link to='/appointment' style={{ color: 'white' }}><Button color="inherit">Appointment</Button></Link>
           {
             user?.email ?
               <Box>
-                <Link to='/dashboard' style={{ color: 'white' }}><Button color="inherit">Dashboard</Button></Link>
+                <Link to='/dashboard/home' style={{ color: 'white' }}><Button color="inherit">Dashboard</Button></Link>
                 <Link style={{ color: 'white' }}><Button onClick={logoutUser} color="inherit">Logout</Button></Link>
               </Box> :
               <Link to='/login' style={{ color: 'white' }}><Button color="inherit">Login</Button></Link>

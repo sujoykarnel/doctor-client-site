@@ -16,9 +16,9 @@ import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import { Grid } from '@mui/material';
-import Calender from '../../Shared/Calender/Calender';
-import Appointments from '../Appointments/Appointments';
+import { Link, Outlet } from 'react-router-dom';
+import { Button } from '@mui/material';
+import useAuth from '../../../hooks/useAuth';
 
 const drawerWidth = 200;
 
@@ -26,7 +26,7 @@ const Dashboard = (props) => {
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
     const [isClosing, setIsClosing] = React.useState(false);
-    const [date, setDate]=React.useState(new Date())
+    const { admin } = useAuth();
 
     const handleDrawerClose = () => {
         setIsClosing(true);
@@ -45,8 +45,17 @@ const Dashboard = (props) => {
 
     const drawer = (
         <div>
-            <Toolbar />
+            <Toolbar >
+                <Link to='/appointment'><Button variant="Outlined" color="inherit">Appointment</Button></Link>
+            </Toolbar>
             <Divider />
+            <Link to='/dashboard/home'><Button variant="Outlined" color="inherit">All Appointment</Button></Link>
+            {
+                admin && <Box>
+                    <Link to='/dashboard/make-admin'><Button variant="Outlined" color="inherit">Make Admin</Button></Link>
+                    <Link to='/dashboard/add-doctor'><Button variant="Outlined" color="inherit">Add Doctor</Button></Link>
+                </Box>
+            }
             <List>
                 {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
                     <ListItem key={text} disablePadding>
@@ -98,7 +107,7 @@ const Dashboard = (props) => {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Typography variant="h6" noWrap component="div">
+                    <Typography variant="h6" noWrap>
                         Dashboard
                     </Typography>
                 </Toolbar>
@@ -140,18 +149,7 @@ const Dashboard = (props) => {
                 sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
             >
                 <Toolbar />
-                <Grid container spacing={2}>
-                    <Grid item xs={12} sm={4}>
-                        <Calender
-                            date={date}
-                            setDate={setDate}
-                        ></Calender>
-                    </Grid>
-                    <Grid item xs={12} sm={8}>
-                        <Appointments date={date}></Appointments>
-                    </Grid>
-                    
-                </Grid>
+                <Outlet></Outlet>
             </Box>
         </Box>
     );
